@@ -1,0 +1,19 @@
+{
+    "kind": "collectionType",
+    "collectionName": "stockrooms",
+    "info": {
+        "singularName": "stockroom",
+        "pluralName": "stockrooms",
+        "displayName": "Stockroom",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string"
+        }
+    }
+}
