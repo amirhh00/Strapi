@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = ({ env }) => ({
+module.exports = ({ env }) => ({
     "users-permissions": {
         config: {
             jwtSecret: env("JWT_SECRET"),
@@ -24,12 +22,17 @@ exports.default = ({ env }) => ({
         config: {
             endpoint: "/graphql",
             shadowCRUD: true,
-            playgroundAlways: false,
+            playgroundAlways: true,
             depthLimit: 7,
             amountLimit: 100,
             apolloServer: {
-                tracing: false,
+                tracing: true,
+                introspection: true,
             },
         },
+    },
+    reports: {
+        enabled: true,
+        resolve: "./src/plugins/reports",
     },
 });

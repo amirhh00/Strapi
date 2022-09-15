@@ -4,8 +4,7 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "Product",
-    "description": ""
+    "displayName": "Product"
   },
   "options": {
     "draftAndPublish": false
@@ -14,9 +13,10 @@
   "attributes": {
     "code": {
       "type": "string",
-      "regex": "^((T*|G*)(\\d{4,5}))+$",
       "unique": true,
-      "required": true
+      "required": true,
+      "maxLength": 7,
+      "minLength": 4
     },
     "name": {
       "type": "string"

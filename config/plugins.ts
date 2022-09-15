@@ -1,4 +1,4 @@
-export default ({ env }) => ({
+module.exports = ({ env }) => ({
   "users-permissions": {
     config: {
       jwtSecret: env("JWT_SECRET"),
@@ -30,5 +30,9 @@ export default ({ env }) => ({
         introspection: true,
       },
     },
+  },
+  reports: {
+    enabled: true,
+    resolve: "./src/plugins/reports",
   },
 });
