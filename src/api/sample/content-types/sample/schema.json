@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "samples",
+  "info": {
+    "singularName": "sample",
+    "pluralName": "samples",
+    "displayName": "Sample",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "samples"
+    },
+    "marketer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "samples"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "isProject": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "sample_date": {
+      "type": "date"
+    },
+    "isFinalized": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "sample_follow_ups": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sample-follow-up.sample-follow-up",
+      "mappedBy": "sample"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

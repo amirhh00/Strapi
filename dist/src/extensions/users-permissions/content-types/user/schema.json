@@ -63,11 +63,23 @@
             "inversedBy": "users",
             "configurable": false
         },
+        "orders": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::order.order",
+            "mappedBy": "users_permissions_user"
+        },
         "customers": {
             "type": "relation",
             "relation": "oneToMany",
             "target": "api::customer.customer",
-            "mappedBy": "users_permissions_user"
+            "mappedBy": "marketer"
+        },
+        "samples": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::sample.sample",
+            "mappedBy": "marketer"
         }
     }
 }

@@ -17,6 +17,32 @@
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js"
       ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Server",
+      "runtimeArgs": [
+        "--no-warnings",
+        "--experimental-specifier-resolution=node",
+        "--loader",
+        "ts-node",
+        // "-r",
+        // "tsconfig-paths/register"
+      ],
+      "args": [
+        "${workspaceFolder}/src/index.ts",
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      // "internalConsoleOptions": "neverOpen",
+      "env": {
+        "TS_NODE_PROJECT": "tsconfig.json",
+        "TS_NODE_TRANSPILE_ONLY": "true",
+        "NODE_ENV": "development",
+        "NODE_NO_WARNINGS": "1"
+      },
+      "sourceMaps": true,
     }
   ]
 }

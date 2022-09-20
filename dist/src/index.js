@@ -7,7 +7,23 @@ exports.default = {
      *
      * This gives you an opportunity to extend code.
      */
-    register( /*{ strapi }*/) { },
+    register({ strapi }) {
+        const disabledGraphQlApis = [
+            "api::order.order",
+            "api::customer.customer",
+            "api::order-item.order-item",
+            "api::product.product",
+            "api::sample.sample",
+            "api::sample-follow-up.sample-follow-up",
+        ];
+        disabledGraphQlApis.forEach((apiStr) => {
+            strapi
+                .plugin("graphql")
+                .service("extension")
+                .shadowCRUD(apiStr)
+                .disable();
+        });
+    },
     /**
      * An asynchronous bootstrap function that runs before
      * your application gets started.

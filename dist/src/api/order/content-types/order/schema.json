@@ -1,0 +1,84 @@
+{
+    "kind": "collectionType",
+    "collectionName": "orders",
+    "info": {
+        "singularName": "order",
+        "pluralName": "orders",
+        "displayName": "order",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "customer": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::customer.customer",
+            "inversedBy": "orders"
+        },
+        "users_permissions_user": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::users-permissions.user",
+            "inversedBy": "orders"
+        },
+        "description": {
+            "type": "string"
+        },
+        "delivery_date": {
+            "type": "date"
+        },
+        "order_date": {
+            "type": "date"
+        },
+        "sales_invoice": {
+            "type": "string"
+        },
+        "purchase_invoice": {
+            "type": "string"
+        },
+        "selected_address": {
+            "type": "string"
+        },
+        "invoice_type": {
+            "type": "enumeration",
+            "enum": [
+                "رسمی",
+                "غیر رسمی",
+                "غیره"
+            ]
+        },
+        "stockroom": {
+            "type": "enumeration",
+            "enum": [
+                "شمس آباد",
+                "اتحاد",
+                "غیره"
+            ]
+        },
+        "purchase": {
+            "type": "enumeration",
+            "enum": [
+                "پس کرایه",
+                "بهسا پلیمر",
+                "بازاریاب",
+                "درج در حساب مشتری",
+                "غیره"
+            ]
+        },
+        "fee_amount": {
+            "type": "string"
+        },
+        "phone": {
+            "type": "string"
+        },
+        "order_items": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::order-item.order-item",
+            "mappedBy": "order"
+        }
+    }
+}

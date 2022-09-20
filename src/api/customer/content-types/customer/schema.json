@@ -15,48 +15,99 @@
     "name": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": true,
+      "pluginOptions": {}
     },
-    "users_permissions_user": {
+    "marketer": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "customers"
     },
     "shipment": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "fieldOfActivity": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "CEO_name": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "landline_number": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "connector_name": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "phone": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "link": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "fax_number": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
-    "address": {
-      "type": "string"
+    "address_office": {
+      "type": "text",
+      "pluginOptions": {}
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "customer_follow_ups": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::customer-follow-up.customer-follow-up",
+      "mappedBy": "customer"
+    },
+    "address_company": {
+      "pluginOptions": {},
+      "type": "text"
+    },
+    "address_factory": {
+      "pluginOptions": {},
+      "type": "text"
+    },
+    "address_stockroom": {
+      "pluginOptions": {},
+      "type": "text"
+    },
+    "address_delivery": {
+      "pluginOptions": {},
+      "type": "text"
+    },
+    "delivery_person": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "delivery_phone": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "accounting_code": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "customer"
+    },
+    "samples": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sample.sample",
       "mappedBy": "customer"
     }
   }

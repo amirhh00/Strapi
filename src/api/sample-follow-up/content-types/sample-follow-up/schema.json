@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sample_follow_ups",
+  "info": {
+    "singularName": "sample-follow-up",
+    "pluralName": "sample-follow-ups",
+    "displayName": "Sample Follow up"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sample": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::sample.sample",
+      "inversedBy": "sample_follow_ups"
+    },
+    "sample_follow_up_date": {
+      "type": "date",
+      "required": true
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
