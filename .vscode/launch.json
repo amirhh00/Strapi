@@ -5,18 +5,29 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Strapi v4 Debug",
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "--inspect"
+      ],
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "console": "internalConsole",
-      "program": "${workspaceFolder}/src/index.ts",
-      "preLaunchTask": "tsc: build - tsconfig.json",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ]
+      "program": "${workspaceFolder}/node_modules/@strapi/strapi/bin/strapi.js",
+      "args": [
+        "develop"
+      ],
+      "autoAttachChildProcesses": true,
+      "console": "internalConsole"
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to strapi",
+      "port": 9230
     },
     {
       "type": "node",
@@ -24,7 +35,6 @@
       "name": "Launch Server",
       "runtimeArgs": [
         "--no-warnings",
-        "--experimental-specifier-resolution=node",
         "--loader",
         "ts-node",
         // "-r",
@@ -35,10 +45,9 @@
       ],
       "cwd": "${workspaceFolder}",
       "console": "internalConsole",
-      // "internalConsoleOptions": "neverOpen",
       "env": {
         "TS_NODE_PROJECT": "tsconfig.json",
-        "TS_NODE_TRANSPILE_ONLY": "true",
+        // "TS_NODE_TRANSPILE_ONLY": "true",
         "NODE_ENV": "development",
         "NODE_NO_WARNINGS": "1"
       },

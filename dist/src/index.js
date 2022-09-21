@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     /**
@@ -7,22 +30,11 @@ exports.default = {
      *
      * This gives you an opportunity to extend code.
      */
-    register({ strapi }) {
-        const disabledGraphQlApis = [
-            "api::order.order",
-            "api::customer.customer",
-            "api::order-item.order-item",
-            "api::product.product",
-            "api::sample.sample",
-            "api::sample-follow-up.sample-follow-up",
-        ];
-        disabledGraphQlApis.forEach((apiStr) => {
-            strapi
-                .plugin("graphql")
-                .service("extension")
-                .shadowCRUD(apiStr)
-                .disable();
-        });
+    async register({ strapi }) {
+        if (strapi.plugin("graphql")) {
+            const graphqlApies = [(await Promise.resolve().then(() => __importStar(require("./api/customer/graphql")))).default];
+            graphqlApies.forEach((graphqlApi) => graphqlApi({ strapi }));
+        }
     },
     /**
      * An asynchronous bootstrap function that runs before

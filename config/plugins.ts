@@ -6,7 +6,7 @@ export default ({ env }) => {
       },
     },
     graphql: {
-      enabled: true,
+      enabled: env("NODE_ENV") === "development",
       config: {
         endpoint: "/graphql",
         shadowCRUD: true,
